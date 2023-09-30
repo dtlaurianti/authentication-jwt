@@ -6,8 +6,6 @@ from database.orm_models import Base, UserLoginInfo
 with open("config.json", "r") as f:
     config = json.load(f)["database"]
 
-print(config)
-
 connection = (
     f'mysql+mysqlconnector://{config["user"]}:'
     f'{config["password"]}@{config["host"]}:'

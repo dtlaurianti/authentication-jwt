@@ -4,14 +4,14 @@ from orm_models import Base, UserLoginInfo
 import json
 
 # import the database configuration from config.json
-with open("config.json", "r") as f:
-    config = json.load(f)
+with open("../config.json", "r") as f:
+    config = json.load(f)["database"]
 
 # interpolate the connection URL
 connection = (
     f'mysql+mysqlconnector://{config["user"]}:'
     f'{config["password"]}@{config["host"]}:'
-    f'{config["port"]}/{config["database"]}'
+    f'{config["port"]}/{config["database_name"]}'
 )
 
 # generate the database schema and enter a few example users

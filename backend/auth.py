@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 
 SECRET_KEY = "secret"
 ALGORITHM = "HS256"
+EXPIRY_DURATION = timedelta(minutes=15)
 
 # tokens are revoked on logout
 revoked_tokens = set()
@@ -14,7 +15,7 @@ def create_token(data: dict, expires_delta: timedelta = None):
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
+        expire = datetime.utcnow() + EXPIRY_DURATION
 
     to_encode.update({"exp": expire})
 
