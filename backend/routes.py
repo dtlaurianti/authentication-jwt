@@ -9,11 +9,6 @@ router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
-class Credentials(BaseModel):
-    username: str
-    password: str
-
-
 @router.post("/login")
 async def login(credentials: OAuth2PasswordRequestForm = Depends()):
     # validate username and password
