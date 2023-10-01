@@ -1,9 +1,8 @@
-from fastapi import FastAPI, APIRouter, Depends, HTTPException, Header
+from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security.oauth2 import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from pydantic import BaseModel
-from datetime import datetime, timedelta
+from datetime import timedelta
 from auth import create_token, decode_token, revoke_token, revoked_tokens
-from models import verify_login, register_user
+from models import verify_login
 
 router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")

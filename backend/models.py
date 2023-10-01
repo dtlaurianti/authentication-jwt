@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 import json
-from database.orm_models import Base, UserLoginInfo
+from database.orm_models import UserLoginInfo
 
 with open("config.json", "r") as f:
     config = json.load(f)["database"]
