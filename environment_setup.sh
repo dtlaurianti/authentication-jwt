@@ -52,5 +52,5 @@ uvicorn app:app &
 cd ../frontend
 sudo apt-get install -y nodejs npm
 npm ci
-npm run dev &
+npm run dev
 

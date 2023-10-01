@@ -1,6 +1,8 @@
 #!/bin/bash
-# deactivate python venv
+# deactivate servers and venv
 #------------------------------------------------------------------------------
+kill $(ps aux | grep uvicorn | grep -v grep | awk '{print $2}')
+kill $(ps aux | grep 'npm run dev' | grep -v grep | awk '{print $2}')
 deactivate
 # kill and uninstall MySQL
 #------------------------------------------------------------------------------
