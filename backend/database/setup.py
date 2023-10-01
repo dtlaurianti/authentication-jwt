@@ -1,10 +1,15 @@
+#!/usr/bin/env python3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from orm_models import Base, UserLoginInfo
 import json
+import os
+
+script_working_directory = os.path.dirname(os.path.realpath(__file__))
+path_to_config = os.path.join(script_working_directory, "../config.json")
 
 # import the database configuration from config.json
-with open("../config.json", "r") as f:
+with open(path_to_config, "r") as f:
     config = json.load(f)["database"]
 
 # interpolate the connection URL
