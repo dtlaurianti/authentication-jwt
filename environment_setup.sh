@@ -22,7 +22,8 @@ sql_execute() {
 }
 sql_execute "CREATE DATABASE authentication;"
 sql_execute "INSTALL PLUGIN validate_password SONAME 'validate_password.so';"
-sql_execute "CREATE USER 'api'@'localhost' IDENTIFIED BY '$MYSQL_API_PASSWORD'"
+sql_execute "CREATE USER 'api'@'localhost' IDENTIFIED BY '$MYSQL_API_PASSWORD';"
+sql_execute "GRANT ALL PRIVILEGES ON authentication.* TO 'api'@'localhost';"
 sql_execute "FLUSH PRIVILEGES;"
 
 
@@ -37,6 +38,8 @@ sudo apt install python3.10-venv
 python3 -m venv venv
 source venv/bin/activate
 pip install --no-input -r requirements.txt
+
+python database/setup.py
 
 # add uvicorn script to the PATH
 if ! which uvicorn >/dev/null 2>&1; then
