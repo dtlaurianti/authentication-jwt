@@ -18,6 +18,7 @@ session_maker = sessionmaker(bind=engine)
 # any function that uses the database should be decorated with this to manage session
 def session_decorator(func):
     def wrapper(*args, **kwargs):
+        print(f"Creating session and connecting with: {connection}")
         session = session_maker()
         res = func(session, *args, **kwargs)
         session.close()
